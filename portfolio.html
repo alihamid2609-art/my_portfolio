@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
@@ -174,7 +174,42 @@
     </div>
   </div>
 
-  <script src="components/footer.js"></script>
+    <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var gallery = document.querySelector('.my-gallery');
+      if (!gallery) return;
+
+      var currentItems = gallery.querySelectorAll('figure.gallery__item').length;
+      var requiredItems = 20;
+      var placeholdersNeeded = Math.max(0, requiredItems - currentItems);
+
+      for (var i = 1; i <= placeholdersNeeded; i++) {
+        var itemNumber = currentItems + i;
+        var figure = document.createElement('figure');
+        figure.className = 'col-12 col-md-6 gallery__item grid-item animate-card-2';
+        figure.setAttribute('itemprop', 'associatedMedia');
+        figure.setAttribute('itemscope', '');
+        figure.setAttribute('itemtype', 'http://schema.org/ImageObject');
+
+        figure.innerHTML =
+          '<a href="images/projects/widget1.png" data-image="images/projects/widget1.png" class="gallery__link" itemprop="contentUrl" data-size="1400x1400">' +
+            '<img src="images/projects/widget1.png" class="gallery__image" itemprop="thumbnail" alt="Work Placeholder ' + itemNumber + '">' +
+          '</a>' +
+          '<figcaption class="gallery__descr" itemprop="caption description" style="display:none;">' +
+            '<h5>Work Placeholder ' + itemNumber + '</h5>' +
+            '<div class="card__tags d-flex flex-wrap">' +
+              '<span class="rounded-tag opposite">Update Later</span>' +
+              '<span class="rounded-tag opposite">Your Project</span>' +
+              '<span class="rounded-tag opposite">Portfolio</span>' +
+            '</div>' +
+            '<p class="small">Temporary image placeholder. Replace with your actual work screenshot and details.</p>' +
+          '</figcaption>';
+
+        gallery.appendChild(figure);
+      }
+    });
+  </script>
+<script src="components/footer.js"></script>
 
   <script src="js/libs.min.js"></script>
   <script src="js/app.js"></script>
@@ -182,6 +217,7 @@
   <script src="js/gallery-init.js"></script>
 </body>
 </html>
+
 
 
 

@@ -1,4 +1,4 @@
-/*! ------------------------------------------------
+﻿/*! ------------------------------------------------
  * Project Name: Name: Braxton - Personal Portfolio & Resume HTML Template
  * Project Description: Show yourself brightly with Braxton - unique and creative portfolio and resume template!
  * Tags: mix_design, resume, portfolio, personal page, cv, template, one page, responsive, html5, css3, creative, clean 
@@ -5671,4 +5671,94 @@ body.page-leaving {
 @keyframes contactSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* ===== Global Breadcrumb ===== */
+.breadcrumb-block {
+  display: block !important;
+  padding-top: 1.8rem;
+  padding-bottom: 1.2rem;
+}
+
+.site-breadcrumb {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 1.1rem 1.6rem;
+  border: 1px solid var(--stroke-elements);
+  border-radius: 999px;
+  background: var(--base-tint);
+  font: normal 700 1.45rem/1 var(--_font-default);
+  color: var(--t-muted);
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.site-breadcrumb a {
+  color: var(--t-secondary);
+  font-weight: 700;
+}
+
+.site-breadcrumb span {
+  color: var(--t-medium);
+}
+
+.site-breadcrumb i {
+  font-size: 1.15rem;
+  color: var(--t-placeholder);
+}
+
+@media only screen and (max-width: 767px) {
+  .breadcrumb-block {
+    display: block !important;
+    padding-top: 1.3rem;
+    padding-bottom: 1rem;
+  }
+
+  .site-breadcrumb {
+    display: inline-flex !important;
+    font-size: 1.35rem;
+    padding: 1rem 1.3rem;
+    gap: 0.85rem;
+  }
+}
+
+
+/* ===== Header Breadcrumb Placement ===== */
+.header {
+  position: relative;
+}
+
+.header__breadcrumb {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  z-index: 260;
+  pointer-events: none;
+}
+
+.header__breadcrumb .site-breadcrumb {
+  pointer-events: auto;
+}
+
+@media only screen and (max-width: 991px) {
+  .header__breadcrumb {
+    left: 0.6rem;
+    right: 0.6rem;
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .header__breadcrumb {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - 4rem);
+  }
 }
