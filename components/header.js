@@ -5,8 +5,6 @@
         <i class="ph-bold ph-list"></i>
       </button>
 
-      <div id="header-breadcrumb" class="header__breadcrumb" aria-label="Breadcrumb"></div>
-
       <div class="header__navigation">
         <nav id="menu" class="menu">
           <ul class="menu__list d-flex justify-content-start">
@@ -97,26 +95,6 @@
 
   window.addEventListener("DOMContentLoaded", function () {
     var current = window.location.pathname.split("/").pop() || "index.html";
-    var pageMeta = {
-      "index.html": { label: "Home", section: null },
-      "about.html": { label: "About", section: null },
-      "portfolio.html": { label: "Portfolio", section: null },
-      "projects.html": { label: "Projects", section: "Portfolio" },
-      "case-studies.html": { label: "Case Studies", section: "Portfolio" },
-      "github-repos.html": { label: "GitHub Repos", section: "Portfolio" },
-      "live-demos.html": { label: "Live Demos", section: "Portfolio" },
-      "resume.html": { label: "Resume", section: null },
-      "cv.html": { label: "View CV", section: "Resume" },
-      "experience.html": { label: "Experience", section: "Resume" },
-      "certifications.html": { label: "Certifications", section: "Resume" },
-      "skills.html": { label: "Skills", section: "Resume" },
-      "contact.html": { label: "Contact", section: null },
-      "blog.html": { label: "Blog", section: "More" },
-      "services.html": { label: "Services", section: "More" },
-      "platform-architecture.html": { label: "Platform Flow", section: "More" },
-      "testimonials.html": { label: "Testimonials", section: "More" },
-      "achievements.html": { label: "Achievements", section: "More" }
-    };
 
     var groupedRoutes = {
       portfolio: ["portfolio.html", "projects.html", "case-studies.html", "github-repos.html", "live-demos.html"],
@@ -137,34 +115,12 @@
     var menuBackdrop = header ? header.querySelector(".menu-backdrop") : null;
     var mobileQuery = window.matchMedia("(max-width: 991px)");
 
-    function injectBreadcrumb() {
-      var target = document.getElementById("header-breadcrumb");
-      if (!target) return;
-
-      var meta = pageMeta[current] || {
-        label: current.replace(".html", "").replace(/-/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); }),
-        section: null
-      };
-
-      var crumbItems = ['<a href="index.html">Home</a>'];
-      if (meta.section) {
-        crumbItems.push("<span>" + meta.section + "</span>");
-      }
-      if (current !== "index.html") {
-        crumbItems.push("<span>" + meta.label + "</span>");
-      }
-
-      target.innerHTML = '<nav class="site-breadcrumb" aria-label="Breadcrumb">' + crumbItems.join('<i class="ph-bold ph-caret-right"></i>') + "</nav>";
-    }
-
     function closeMobileMenu() {
       if (!header || !menuToggle) return;
       header.classList.remove("menu-open");
       document.body.classList.remove("menu-open");
       menuToggle.setAttribute("aria-expanded", "false");
     }
-
-    injectBreadcrumb();
 
     if (menuToggle && header) {
       menuToggle.addEventListener("click", function () {
@@ -244,6 +200,3 @@
     });
   });
 })();
-
-
-
