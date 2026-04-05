@@ -5731,34 +5731,36 @@ body.page-leaving {
 }
 
 .header__breadcrumb {
-  position: absolute;
-  top: calc(100% + 0.6rem);
-  left: 1rem;
-  right: 1rem;
   display: flex;
-  justify-content: center;
-  z-index: 260;
-  pointer-events: none;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0.8rem;
 }
 
 .header__breadcrumb .site-breadcrumb {
-  pointer-events: auto;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 991px) {
   .header__breadcrumb {
-    left: 0.6rem;
-    right: 0.6rem;
-    justify-content: flex-start;
+    margin-right: 0.6rem;
+  }
+
+  .header__breadcrumb .site-breadcrumb {
+    font-size: 1.25rem;
+    padding: 0.85rem 1.05rem;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .header__breadcrumb {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: calc(100vw - 4rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
+
+

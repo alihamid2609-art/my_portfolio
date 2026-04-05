@@ -5,6 +5,8 @@
         <i class="ph-bold ph-list"></i>
       </button>
 
+      <div id="header-breadcrumb" class="header__breadcrumb" aria-label="Breadcrumb"></div>
+
       <div class="header__navigation">
         <nav id="menu" class="menu">
           <ul class="menu__list d-flex justify-content-start">
@@ -136,8 +138,8 @@
     var mobileQuery = window.matchMedia("(max-width: 991px)");
 
     function injectBreadcrumb() {
-      var wrapper = document.querySelector(".content__wrapper");
-      if (!wrapper) return;
+      var target = document.getElementById("header-breadcrumb");
+      if (!target) return;
 
       var meta = pageMeta[current] || {
         label: current.replace(".html", "").replace(/-/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); }),
@@ -152,11 +154,7 @@
         crumbItems.push("<span>" + meta.label + "</span>");
       }
 
-      var breadcrumbWrap = document.createElement("div");
-      breadcrumbWrap.className = "content__block breadcrumb-block";
-      breadcrumbWrap.innerHTML = '<nav class="site-breadcrumb" aria-label="Breadcrumb">' + crumbItems.join('<i class="ph-bold ph-caret-right"></i>') + "</nav>";
-
-      wrapper.insertBefore(breadcrumbWrap, wrapper.firstChild);
+      target.innerHTML = '<nav class="site-breadcrumb" aria-label="Breadcrumb">' + crumbItems.join('<i class="ph-bold ph-caret-right"></i>') + "</nav>";
     }
 
     function closeMobileMenu() {
@@ -246,3 +244,6 @@
     });
   });
 })();
+
+
+
