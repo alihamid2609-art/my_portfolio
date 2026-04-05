@@ -1,4 +1,4 @@
-// ------------------------------------------------
+﻿// ------------------------------------------------
 // Project Name: Braxton - Personal Portfolio & Resume HTML Template
 // Project Description: Show yourself brightly with Braxton - unique and creative portfolio and resume template!
 // Tags: mix_design, resume, portfolio, personal page, cv, template, one page, responsive, html5, css3, creative, clean
@@ -322,6 +322,12 @@ $(function() {
   // --------------------------------------------- //
   $("#contact-form").submit(function() {
     var th = $(this);
+    var submitBtn = th.find('button[type="submit"]');
+    var btnCaption = submitBtn.find('.btn-caption');
+    var btnIcon = submitBtn.find('i');
+    var defaultCaption = btnCaption.text();
+    var minLoaderMs = 2200;
+    var startedAt = Date.now();
 
     var name = th.find('input[name="Name"]').val() || '';
     var company = th.find('input[name="Company"]').val() || '';
@@ -338,6 +344,19 @@ $(function() {
       'Message:\n' + message
     );
 
+    var setLoading = function (isLoading) {
+      submitBtn.prop('disabled', isLoading);
+      submitBtn.toggleClass('is-sending', isLoading);
+      btnCaption.text(isLoading ? 'Sending...' : defaultCaption);
+      btnIcon.attr('class', isLoading ? 'ph-bold ph-spinner-gap' : 'ph-bold ph-paper-plane-tilt');
+    };
+
+    var waitMinLoader = function (next) {
+      var elapsed = Date.now() - startedAt;
+      var delay = Math.max(0, minLoaderMs - elapsed);
+      setTimeout(next, delay);
+    };
+
     var showSuccess = function () {
       $('.contact').find('.form').addClass('is-hidden');
       $('.contact').find('.form__reply').addClass('is-visible');
@@ -348,16 +367,33 @@ $(function() {
       }, 5000);
     };
 
+    var showError = function (text) {
+      alert(text || 'Could not send message right now. Please try again.');
+    };
+
+    setLoading(true);
+
     $.ajax({
       type: 'POST',
       url: 'mail.php',
       data: th.serialize(),
-      timeout: 3000
-    }).done(function() {
-      showSuccess();
-    }).fail(function() {
-      window.location.href = 'mailto:alihamid2609@gmail.com?subject=' + subject + '&body=' + body;
-      showSuccess();
+      dataType: 'json',
+      timeout: 12000
+    }).done(function(response) {
+      waitMinLoader(function () {
+        setLoading(false);
+        if (response && response.ok) {
+          showSuccess();
+          return;
+        }
+        showError((response && response.message) ? response.message : 'Could not send message right now.');
+      });
+    }).fail(function(xhr) {
+      waitMinLoader(function () {
+        setLoading(false);
+        window.location.href = 'mailto:alihamid2609@gmail.com?subject=' + subject + '&body=' + body;
+        showSuccess();
+      });
     });
 
     return false;
@@ -471,6 +507,32 @@ window.addEventListener('DOMContentLoaded', () => {
 // Color Switch End
 // --------------------------------------------- //
 
+
+
+
+
+
+// --------------------------------------------- //
+// Let's Talk Fallback Start
+// --------------------------------------------- //
+window.addEventListener('DOMContentLoaded', () => {
+  const talkBtn = document.getElementById('notify-trigger');
+  if (!talkBtn) return;
+
+  if (!talkBtn.getAttribute('href')) {
+    talkBtn.setAttribute('href', 'mailto:alihamid2609@gmail.com?subject=Portfolio%20Inquiry');
+  }
+
+  talkBtn.addEventListener('click', (event) => {
+    const href = talkBtn.getAttribute('href') || '';
+    if (!href.startsWith('mailto:')) return;
+    event.preventDefault();
+    window.location.href = href;
+  });
+});
+// --------------------------------------------- //
+// Let's Talk Fallback End
+// --------------------------------------------- //
 
 
 

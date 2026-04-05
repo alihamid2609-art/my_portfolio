@@ -47,7 +47,7 @@
                 <i class="ph-bold ph-caret-down"></i>
               </button>
               <ul class="menu__dropdown">
-                <li><a class="menu__dropdown-link" href="resume.html#download-cv">Download CV</a></li>
+                <li><a class="menu__dropdown-link" href="cv.html">View CV</a></li>
                 <li><a class="menu__dropdown-link" href="experience.html">Experience</a></li>
                 <li><a class="menu__dropdown-link" href="certifications.html">Certifications</a></li>
                 <li><a class="menu__dropdown-link" href="skills.html">Skills</a></li>
@@ -98,7 +98,7 @@
 
     var groupedRoutes = {
       portfolio: ["portfolio.html", "projects.html", "case-studies.html", "github-repos.html", "live-demos.html"],
-      resume: ["resume.html", "experience.html", "certifications.html", "skills.html"],
+      resume: ["resume.html", "cv.html", "experience.html", "certifications.html", "skills.html"],
       more: ["blog.html", "services.html", "platform-architecture.html", "testimonials.html", "achievements.html"]
     };
 
@@ -200,3 +200,4 @@
     });
   });
 })();
+
