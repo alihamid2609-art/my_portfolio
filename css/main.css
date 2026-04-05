@@ -5551,3 +5551,56 @@ body.page-leaving {
     font-size: 3.6rem;
   }
 }
+/* ===== Sidebar Final Lock (Bigger + Never Scroll Away) ===== */
+@media only screen and (min-width: 992px) {
+  .avatar {
+    position: fixed !important;
+    top: 8rem !important;
+    width: clamp(320px, 24vw, 420px) !important;
+    height: min(80vh, calc(100vh - 10rem)) !important;
+    min-height: 62rem !important;
+    max-height: 88rem !important;
+    z-index: 130 !important;
+    overflow: hidden !important;
+  }
+
+  .avatar__container {
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+}
+/* ===== Fixed Sidebar Hard Lock (Desktop) ===== */
+@media only screen and (min-width: 992px) {
+  body,
+  body.page-ready,
+  body.page-leaving {
+    transform: none !important;
+  }
+
+  #avatar,
+  .avatar {
+    position: fixed !important;
+    top: 8rem !important;
+    left: 3rem !important;
+    z-index: 999 !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #avatar,
+  .avatar {
+    left: 6rem !important;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  #avatar,
+  .avatar {
+    left: 8rem !important;
+  }
+}
+/* ===== Footer Above Sidebar ===== */
+.site-footer {
+  position: relative !important;
+  z-index: 1200 !important;
+}
