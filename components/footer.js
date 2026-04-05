@@ -5,14 +5,14 @@
       <div class="site-footer__inner">
         <div class="site-footer__brand">
           <p class="site-footer__name">Hamid Ali</p>
-          <p class="site-footer__tagline">Backend-focused Software Engineer building scalable products.</p>
+          <p class="site-footer__tagline">Backend-focused Software Engineer building workflow, approvals, integrations, and reporting platforms.</p>
         </div>
 
         <div class="site-footer__links">
           <a href="index.html">Home</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="about.html">About</a>
-          <a href="resume.html">Resume</a>
+          <a href="projects.html">Projects</a>
+          <a href="services.html">Services</a>
+          <a href="platform-architecture.html">Platform Flow</a>
           <a href="contact.html">Contact</a>
         </div>
 
@@ -22,7 +22,7 @@
           <a href="mailto:alihamid2609@gmail.com?subject=Portfolio%20Inquiry" aria-label="Email"><i class="ph-bold ph-envelope-simple"></i></a>
         </div>
 
-        <p class="site-footer__copy">&copy; ${year} Hamid Ali. All rights reserved.</p>
+        <p class="site-footer__copy">&copy; ${year} Hamid Ali. Built for scalable product engineering opportunities.</p>
       </div>
     </footer>
   `);

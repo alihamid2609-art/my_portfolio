@@ -320,24 +320,48 @@ $(function() {
   // --------------------------------------------- //
   // Contact Form Start
   // --------------------------------------------- //
-  $("#contact-form").submit(function() { //Change
-		var th = $(this);
-		$.ajax({
-			type: "POST",
-			url: "mail.php", //Change
-			data: th.serialize()
-		}).done(function() {
+  $("#contact-form").submit(function() {
+    var th = $(this);
+
+    var name = th.find('input[name="Name"]').val() || '';
+    var company = th.find('input[name="Company"]').val() || '';
+    var email = th.find('input[name="E-mail"]').val() || '';
+    var phone = th.find('input[name="Phone"]').val() || '';
+    var message = th.find('textarea[name="Message"]').val() || '';
+
+    var subject = encodeURIComponent('Portfolio Contact Message - ' + name);
+    var body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Company: ' + company + '\n' +
+      'Email: ' + email + '\n' +
+      'Phone: ' + phone + '\n\n' +
+      'Message:\n' + message
+    );
+
+    var showSuccess = function () {
       $('.contact').find('.form').addClass('is-hidden');
       $('.contact').find('.form__reply').addClass('is-visible');
-			setTimeout(function() {
-				// Done Functions
+      setTimeout(function() {
         $('.contact').find('.form__reply').removeClass('is-visible');
         $('.contact').find('.form').delay(300).removeClass('is-hidden');
-				th.trigger("reset");
-			}, 5000);
-		});
-		return false;
-	});
+        th.trigger('reset');
+      }, 5000);
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: 'mail.php',
+      data: th.serialize(),
+      timeout: 3000
+    }).done(function() {
+      showSuccess();
+    }).fail(function() {
+      window.location.href = 'mailto:alihamid2609@gmail.com?subject=' + subject + '&body=' + body;
+      showSuccess();
+    });
+
+    return false;
+  });
   // --------------------------------------------- //
   // Contact Form End
   // --------------------------------------------- //
@@ -446,6 +470,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // --------------------------------------------- //
 // Color Switch End
 // --------------------------------------------- //
+
 
 
 
