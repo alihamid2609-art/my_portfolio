@@ -5604,3 +5604,8 @@ body.page-leaving {
   position: relative !important;
   z-index: 1200 !important;
 }
+/* ===== Keep Sidebar Photo Same Size ===== */
+.avatar__image img {
+  height: 220px !important;
+  object-fit: fill;
+}
