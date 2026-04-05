@@ -5,7 +5,7 @@
       <div class="site-footer__inner">
         <div class="site-footer__brand">
           <p class="site-footer__name">Hamid Ali</p>
-          <p class="site-footer__tagline">Backend-focused Software Engineer building workflow, approvals, integrations, and reporting platforms.</p>
+          <p class="site-footer__tagline">Backend Software Engineer focused on building SaaS products.</p>
         </div>
 
         <div class="site-footer__links">
@@ -27,3 +27,6 @@
     </footer>
   `);
 })();
+
+
+
